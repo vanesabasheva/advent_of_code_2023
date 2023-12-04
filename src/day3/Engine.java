@@ -1,12 +1,11 @@
 package day3;
 
+import common.Helpers;
 import java.io.BufferedReader;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class Engine {
   private final Map<Character, List<Integer>> symbolToIndicesMap = new HashMap<>();
@@ -37,7 +36,7 @@ public class Engine {
     String line = file.get(0);
     String nextLine = file.get(1);
 
-    List<String> numbers = this.findIntegers(line);
+    List<String> numbers = Helpers.findIntegers(line);
     for (String number : numbers) {
 
       if (isAPartNumber(line, null, nextLine, number)) {
@@ -53,7 +52,7 @@ public class Engine {
       previousLine = file.get(i - 1);
       line = file.get(i);
       nextLine = file.get(i + 1);
-      numbers = this.findIntegers(line);
+      numbers = Helpers.findIntegers(line);
       for (String number : numbers) {
         if (isAPartNumber(line, previousLine, nextLine, number)) {
           partNumber = Integer.parseInt(number);
@@ -64,7 +63,7 @@ public class Engine {
     previousLine = file.get(fileSize - 2);
     line = file.get(fileSize - 1);
 
-    numbers = this.findIntegers(line);
+    numbers = Helpers.findIntegers(line);
     for (String number : numbers) {
       if (isAPartNumber(line, previousLine, null, number)) {
         partNumber = Integer.parseInt(number);
@@ -152,17 +151,6 @@ public class Engine {
     return indexes;
   }
 
-  // returns all numbers as string found in the given line
-  public List<String> findIntegers(String line) {
-    Pattern integerPattern = Pattern.compile("\\d+");
-    Matcher matcher = integerPattern.matcher(line);
 
-    List<String> integerList = new ArrayList<>();
-    while (matcher.find()) {
-      integerList.add(matcher.group());
-    }
-
-    return integerList;
-  }
 
 }
