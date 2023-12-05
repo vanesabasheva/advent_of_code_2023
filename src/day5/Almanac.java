@@ -32,7 +32,7 @@ public class Almanac {
         for (long k = j; k < end; k++) {
           long seed = seedStart + k;
           // Process the seed here (map it through various stages)
-          long location = calculateLocationForSeed(seed); // Implement this method
+          long location = calculateLocationForSeed(seed);
           if (location < closestLocation) {
             closestLocation = location;
           }
