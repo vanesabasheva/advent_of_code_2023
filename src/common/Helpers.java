@@ -18,4 +18,12 @@ public class Helpers {
 
     return integerList;
   }
+
+  public static List<Long> convertStringListToLongList(List<String> numbersListAsString) {
+    List<Long> numbersList = new ArrayList<>();
+    for (String numberAsString : numbersListAsString) {
+      numbersList.add(Long.parseLong(numberAsString));
+    }
+    return numbersList;
+  }
 }
